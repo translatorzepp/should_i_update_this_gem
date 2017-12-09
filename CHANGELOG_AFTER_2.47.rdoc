@@ -1,0 +1,179 @@
+== 2.79.0
+* Add `device_data_captured` field to `risk_data`
+* Add submit_for_settlement to Braintree::Subscription.retry_charge
+* Add `options` -> `paypal` -> `description` for creating and updating subscriptions
+* Add `bin` to `ApplePayCard`
+* Add support for upgrading a PayPal future payment refresh token to a billing agreement
+* Fix spec to expect PayPal transaction to settle immediately after successful capture
+* Add GrantedPaymentInstrumentUpdate webhook support
+* Add `options` -> `paypal` -> `shipping` for creating & updating customers as well as creating payment methods
+* Add ability to create a transaction from a shared nonce
+* Add ruby 2.4 compatibility for the XML Generator (thanks @kinkade!)
+* Add README note for supression of logs (thanks @badosu!)
+* Allow `VenmoAccount` to be returned from `PaymentMethod.find` (thanks @NickMele!)
+
+== 2.78.0
+* Support `eci_indicator` for Transaction#sale with raw Apple Pay parameters
+
+== 2.77.0
+* Add `AuthorizationAdjustment` class and `authorization_adjustments` to Transaction
+* Add document upload support
+* Add Braintree::Dispute.find method
+* Add Braintree::Dispute.search method
+* Add Braintree::Dispute.accept method
+* Add Braintree::Dispute.finalize method
+* Add Braintree::Dispute.add_file_evidence method
+* Add Braintree::Dispute.add_text_evidence method
+* Add Braintree::Dispute.remove_evidence method
+* Coinbase is no longer a supported payment method. `PaymentMethodNoLongerSupported` will be returned for Coinbase operations.
+* Add Braintree::ApplePay for web domain registration
+* Add facilitated details to Transaction if present
+
+== 2.76.0
+* Pass configured gateway to Merchant#_new instead of using global gateway (thanks @cwalsh!)
+
+== 2.75.0
+* Add support for additional PayPal options when vaulting a PayPal Order
+
+== 2.74.0
+* Add Visa Checkout support
+* Add ConnectedMerchantStatusTransitioned and ConnectedMerchantPayPalStatusChanged Auth webhooks
+* Add new properties to `CreditCardVerification` and `Customer`
+
+== 2.73.0
+* Bugfix: Add `unique_number_identifier` to Transaction::CreditCardDetails
+* Updates to specs
+
+== 2.72.0
+* Remove `account_description` field from +UsBankAccount+ and +UsBankAccountDetails+
+
+== 2.71.0
+* Allow optional configuration of SSL version
+* Add functionality to list all merchant accounts for a merchant with `merchant_account.all`
+
+== 2.70.0
+* Bugfix: Update UsBank tests to use legal routing numbers
+* Add option +skip_advanced_fraud_check+ for transaction flows
+* Add IdealPayment class with +sale+ and +find+ methods
+* Add payer_status accessor to paypal_details object
+
+== 2.69.1
+* Bugfix: Allow PaymentMethod.find(token) to return +UsBankAccount+
+
+== 2.69.0
+* Add +default?+ support for +UsBankAccount+
+* Add +ach_mandate+ data to +UsBankAccount+ and +UsBankAccountDetails+
+
+== 2.68.2
+* Bugfix: allow Customer#payment_methods to return UsBankAccounts
+
+== 2.68.1
+* Fix compatibility with new gateway endpoint
+
+== 2.68.0
+* Add 'UsBankAccount' payment method
+
+== 2.67.0
+* Add 'created_at' to subscription search
+* Expose 'plan_id' in subscription 'status_details'
+* Add cannot clone marketplace transaction error
+* Add FailOnDuplicatePaymentMethod to Customer update
+
+== 2.66.0
+* Add 'currency_iso_code' to subscription 'status_details'
+* Expose credit card 'product_id'
+* Add validation error for verifications with submerchants
+
+== 2.65.0
+* Allow authenticated proxies
+* Add new constant for Venmo Account payment instrument type
+
+== 2.64.0
+* Add 'default_payment_method' option to Customer
+
+== 2.63.0
+* Add order_id to Refund
+* Enabled 3DS pass thru support
+* Expose IDs in resource collections
+* Add 'success?' method to disbursement
+
+== 2.62.0
+* Add method of revoking OAuth access tokens.
+
+== 2.61.1
+* Fix compatibility in specs with Ruby 1.8.7
+
+== 2.61.0
+* Add transaction +UpdateDetails+
+* Support for Too Many Requests response codes
+* Add +default?+ method to MerchantAccount
+
+== 2.60.0
+* Allow Coinbase account to be updated
+* Add support to pass currencies to merchant create
+* Support multiple partial settlements
+* Add IsInvalid error code for addresses
+
+== 2.59.0
+* Add support for third party Android Pay integrations
+
+== 2.58.0
+* Add AccountUpdaterDailyReport webhook parsing
+
+== 2.57.0
+* Add Verification#create
+* Add options to +submit_for_settlement+ transaction flows
+* Upgrade libxml-ruby version to 2.8.0
+* Update https certificate bundle
+
+== 2.56.0
+* Add better defaults to client token generation when using an access token by consolidating client token defaults into ClientTokenGateway
+* Add PaymentMethod#revoke
+
+== 2.55.0
+* Add VenmoAccount
+* Add support for Set Transaction Context supplementary data
+
+== 2.54.0
+* Treat dispute date_opened and date_won attributes as Dates. Note: in versions 2.51.0-2.53.0, the dispute date_opened and date_won attributes were incorrectly parsed as strings. We pulled them off RubyGems to prevent the incorrect code from being downloaded.
+
+== 2.53.0
+* This version of the library was removed from RubyGems. See the note on 2.54.0 for further explanation.
+* Adds options to skip avs and cvv checks for a single transaction
+
+== 2.52.0
+* This version of the library was removed from RubyGems. See the note on 2.54.0 for further explanation.
+* Add Amex Express Checkout payment method
+* Fix bug where Customer#payment_methods didn't include Android Pay cards
+
+== 2.51.0
+* This version of the library was removed from RubyGems. See the note on 2.54.0 for further explanation.
+* Fixes bug with signature of partner oauth connect url
+* Adds date_won, date_opened and kind to dispute webhook parsing
+* Make grant a method on PaymentMethod and not just CreditCard
+
+== 2.50.0
+* Adds support for nonce granting to CreditCards
+* Adds FacilitatorDetails for facilitated transactions
+* Adds authorized_transaction_id, partial_settlement_transaction_ids and facilitator_details attr_readers to Transaction
+* Adds support for Transaction#sale with raw Apple Pay parameters
+* Adds Merchant.provision_raw_apple_pay
+* Relaxes constraints on TrasnactionSearch#source
+* Adds Check WebhookNotifications
+* Adds Transaction.submit_for_partial_settlement
+
+== 2.49.0
+* Remove Amex Pay with Points response from Transaction.sale response
+* Add expired? method to Apple Pay card
+* Add customer_id property to +AndroidPayCard+, +ApplePayCard+, +CoinbaseAccount+, +EuropeBankAccount+, +PaypalAccount+, and +UnknownPaymentMethod+
+* Add new error +ProcessorDoesNotSupportAuths+
+
+== 2.48.1
+* Fix issue in TestTransaction spec
+* Fix issue with LibXML causing a segfault when using Ruby version 2.0.0
+
+== 2.48.0
+* Add support for Amex rewards transactions
+* Add billing_agreement_id to PayPalAccount
+* Fix bug in TestingGateway#check_environment
+

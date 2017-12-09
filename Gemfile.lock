@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    braintree (2.47)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  braintree (~> 2.47)
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   1.15.0
+
