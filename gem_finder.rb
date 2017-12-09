@@ -47,14 +47,14 @@ class GemFinder
   def changelog
     # calls other methods to output the changelog for the gem from most recent version to the version you currently have
     changelog_uri = github_changelog_contents_uri(gem_source_code_uri)
-    puts changelog_uri
+    # puts changelog_uri
     response = HTTParty.get(changelog_uri)
     # puts response.code
     if response.code == 200
       # if encoding is base64
       changelog = Base64.decode64(response["content"])
       # end
-      puts changelog
+      # puts changelog
       trimmed_changelog = changelog_truncator(changelog)
     else
       #return unsuccessful response
@@ -82,7 +82,6 @@ class GemFinder
     lines = StringIO.new(changelog, "r")
     truncated_gemfile = ""
     lines.each do |line|
-      puts line
       if line.match(version_regex)
         break
       end
